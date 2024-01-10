@@ -10,14 +10,14 @@ const search = document.getElementById('search')
 
 getMovies(API_URL)
 
-async function getMovies(url) {
+async function getMovies (url) {
   const res = await fetch(url)
   const data = await res.json()
 
   showMovies(data.results)
 }
 
-function showMovies(movies) {
+function showMovies (movies) {
   main.innerHTML = ''
 
   movies.forEach((movie) => {
@@ -41,8 +41,8 @@ function showMovies(movies) {
   })
 }
 
-function getClassByRate(vote) {
-  if(vote >= 8) {
+function getClassByRate (vote) {
+  if (vote >= 8) {
     return 'green'
   } else if(vote >= 5) {
     return 'orange'
@@ -53,13 +53,10 @@ function getClassByRate(vote) {
 
 form.addEventListener('submit', (e) => {
   e.preventDefault()
-
   const searchTerm = search.value
-
-  if(searchTerm && searchTerm !== '') {
+  if (searchTerm && searchTerm !== '') {
     getMovies(SEARCH_API + searchTerm)
-
-    search.value = ''
+    search.value= ''
   } else {
     window.location.reload()
   }
